@@ -28,8 +28,8 @@ def web_scrapper(url:str):
     res = requests.get(scrape_url)
     soup = bs4.BeautifulSoup(res.text,'lxml')
     books = soup.select(".product_pod")
-    find_one_star(books, one_star_titles)
-  #show_res(one_star_titles)
+    find_one_star(books, one_star_titles) #call find_one_star() to parse the books.
+  show_res(one_star_titles) # call show_res()to present the result.
   return books
     
 def find_one_star(books:list, title_li:list):
@@ -51,7 +51,7 @@ def show_res(title_li):
   '''
   books_num = len(title_li)     
   for i in range(books_num):
-    print(one_star_titles[i]) 
+    print(title_li[i]) 
   print(f'There are {books_num} one star rating books on the first 5 pages.')
   return books_num
   
